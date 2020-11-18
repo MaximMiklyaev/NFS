@@ -1,10 +1,8 @@
-#скачиваем Vagrantfile
+#скачиваем Vagrantfile:
+                       git clone https://github.com/MaximMiklyaev/NFS.git
 
-:git clone https://github.com/MaximMiklyaev/NFS.git
-
-#переходим в директорию
-
-:cd /NFS
+#переходим в директорию:
+cd /NFS
 
 #запускаем образ
 
