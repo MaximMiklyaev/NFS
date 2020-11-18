@@ -67,7 +67,6 @@
 
    инф. server_script.sh
 
-                   вывод:
                           #!/bin/sh
                           set -eux
                           echo "HM4"
@@ -89,20 +88,20 @@
                           #монтируем указанный в fstab каталог в /mnt
                           mount /mnt/
 
-#проверка примонтированного диска на клюенте
+#проверка примонтированного диска на клиенте
 
 #подключаемся к клиентской VM
 
 vagrant ssh nfsClient
 
-lsblk
+    lsblk
 
     вывод:
           NAME   MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
           sda      8:0    0  40G  0 disk
           `-sda1   8:1    0  40G  0 part /
 
-df -h
+    df -h
 
     вывод:
           Filesystem                 Size  Used Avail Use% Mounted on
