@@ -1,12 +1,17 @@
-#скачиваем Vagrantfile:
-                       git clone https://github.com/MaximMiklyaev/NFS.git
+#скачиваем Vagrantfile
+
+   command:
+           git clone https://github.com/MaximMiklyaev/NFS.git
 
 #переходим в директорию:
-cd /NFS
+
+   command:
+           cd /NFS
 
 #запускаем образ
 
-:vagrant up
+   command:
+           vagrant up
 
 #Vagrantfile поднимает 2 виртуалки: сервер(nfsSerer) и клиент(nfsClient)
 
@@ -16,51 +21,49 @@ cd /NFS
 
 #при поднятие nfsSerer запускается скрипт server_script.sh
    
-   инф. server_script.sh
-
-:
-                         #!/bin/sh
-                         set -eux
-                         echo "HM4"
-                         whoami
-                         uname -a
-                         hostname -f
-                         ip addr show dev eth1
-                         echo "commands"
-                         #переходим под root права
-                         sudo -i
-                         #устанавка утилит на сервер
-                         yum install -y nfs-utils
-                         #включаем сервисы nfs сервера
-                         systemctl enable rpcbind
-                         systemctl enable nfs-server
-                         systemctl enable rpc-statd
-                         systemctl enable nfs-idmapd
-                         #запуск сервисов nfs сервера
-                         systemctl start rpcbind
-                         systemctl start nfs-server
-                         systemctl start rpc-statd
-                         systemctl start nfs-idmapd
-                         #создание дирректории для общего доступа
-                         mkdir -p /usr/shared/
-                         #назначение прав данной дирректории
-                         chmod 0777 /usr/shared/
-                         #конфигурируем exports
-                         cat << EOF | sudo tee /etc/exports
-                         /usr/shared/ 192.168.10.0/24(rw,sync)
-                         EOF
-                         #применяем изменения
-                         exportfs -ra
-                         #включаем и запускаем firewalld
-                         systemctl enable firewalld
-                         systemctl start firewalld
-                         #включаем сервисы
-                         firewall-cmd --permanent --add-service=nfs3
-                         firewall-cmd --permanent --add-service=mountd
-                         firewall-cmd --permanent --add-service=rpc-bind
-                         firewall-cmd --reload
-                         #создаем папку uploads в расшареной дирректории
-                         mkdir /usr/shared/uploads
+   инф. server_script.sh:
+                         /#!/bin/sh
+                         /set -eux
+                         /echo "HM4"
+                         /whoami
+                         /uname -a
+                         /hostname -f
+                         /ip addr show dev eth1
+                         /echo "commands"
+                         /#переходим под root права
+                         /sudo -i
+                         /#устанавка утилит на сервер
+                         /yum install -y nfs-utils
+                         /#включаем сервисы nfs сервера
+                         /systemctl enable rpcbind
+                         /systemctl enable nfs-server
+                         /systemctl enable rpc-statd
+                         /systemctl enable nfs-idmapd
+                         /#запуск сервисов nfs сервера
+                         /systemctl start rpcbind
+                         /systemctl start nfs-server
+                         /systemctl start rpc-statd
+                         /systemctl start nfs-idmapd
+                         /#создание дирректории для общего доступа
+                         /mkdir -p /usr/shared/
+                         /#назначение прав данной дирректории
+                         /chmod 0777 /usr/shared/
+                         /#конфигурируем exports
+                         /cat << EOF | sudo tee /etc/exports
+                         //usr/shared/ 192.168.10.0/24(rw,sync)
+                         /EOF
+                         /#применяем изменения
+                         /exportfs -ra
+                         /#включаем и запускаем firewalld
+                         /systemctl enable firewalld
+                         /systemctl start firewalld
+                         /#включаем сервисы
+                         /firewall-cmd --permanent --add-service=nfs3
+                         /firewall-cmd --permanent --add-service=mountd
+                         /firewall-cmd --permanent --add-service=rpc-bind
+                         /firewall-cmd --reload
+                         /#создаем папку uploads в расшареной дирректории
+                         /mkdir /usr/shared/uploads
  
 #при поднятие nfsClient запускается скрипт client_script.sh
 
