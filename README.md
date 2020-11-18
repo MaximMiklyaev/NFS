@@ -1,22 +1,26 @@
 #скачиваем Vagrantfile
 
-git clone https://github.com/MaximMiklyaev/NFS.git
+:git clone https://github.com/MaximMiklyaev/NFS.git
 
 #переходим в директорию
 
-cd /NFS
+:cd /NFS
 
 #запускаем образ
 
-vagrant up
+:vagrant up
 
 #Vagrantfile поднимает 2 виртуалки: сервер(nfsSerer) и клиент(nfsClient)
+
 #на сервере расшаряется директория
+
 #при старте клиент автоматически монтирует директорию с сервера
 
 #при поднятие nfsSerer запускается скрипт server_script.sh
    
-   инф. server_script.sh:
+   инф. server_script.sh
+
+:
                          #!/bin/sh
                          set -eux
                          echo "HM4"
@@ -62,7 +66,9 @@ vagrant up
  
 #при поднятие nfsClient запускается скрипт client_script.sh
 
-   инф. server_script.sh:
+   инф. server_script.sh
+
+:
                           #!/bin/sh
                           set -eux
                           echo "HM4"
@@ -85,7 +91,9 @@ vagrant up
                           mount /mnt/
 
 #проверка примонтированного диска на клюенте
+
 #подключаемся к клиентской VM
+
 vagrant ssh nfsClient
 
 lsblk
