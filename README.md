@@ -1,14 +1,14 @@
 #скачиваем Vagrantfile
 
-           git clone https://github.com/MaximMiklyaev/NFS.git
+           'git clone https://github.com/MaximMiklyaev/NFS.git'
 
 #переходим в директорию:
 
-           cd /NFS
+           'cd /NFS'
 
 #запускаем образ
 
-           vagrant up
+           'vagrant up'
 
 #Vagrantfile поднимает 2 VM: сервер(nfsSerer) и клиент(nfsClient)
 
@@ -92,16 +92,20 @@
 
 #подключаемся к клиентской VM
 
-vagrant ssh nfsClient
+    'vagrant ssh nfsClient'
 
-    lsblk
+
+
+    'lsblk'
 
     вывод:
           NAME   MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
           sda      8:0    0  40G  0 disk
           `-sda1   8:1    0  40G  0 part /
 
-    df -h
+
+
+    'df -h'
 
     вывод:
           Filesystem                 Size  Used Avail Use% Mounted on
